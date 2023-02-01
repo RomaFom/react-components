@@ -1,8 +1,66 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import React, { useState } from "react";
 import { MdSend } from "react-icons/md";
 import { AiOutlineCheck } from "react-icons/ai";
-const StyledSendButton = styled.button<{
+
+const iconAnimation = keyframes`
+  0%,
+  5% {
+    translate: 0 0;
+  }
+  20%,
+  30% {
+    translate: -250px 0;
+  }
+  40% {
+    translate: 200px 0;
+    scale: 2;
+  }
+  40.1% {
+    translate: 200px -60px;
+    scale: 1;
+  }
+  40.2% {
+    translate: 34px -60px;
+  }
+  45%,
+  95% {
+    translate: 34px 0;
+  }
+  100% {
+    translate: 0 0;
+  }
+`;
+
+const textAnimation = keyframes`
+  0%,
+  30% {
+    translate: 0 0;
+  }
+  39.9% {
+    translate: 0 100px;
+  }
+  40% {
+    translate: 300px 100px;
+  }
+  40.1% {
+    translate: 300px -60px;
+  }
+  40.2% {
+    translate: 33px -60px;
+  }
+  45% {
+    translate: 33px 0;
+  }
+  95% {
+    translate: 33px 0;
+  }
+  100% {
+    translate: 0 0;
+  }
+`;
+
+const Button = styled.button<{
   variant?: "primary" | "error" | "info";
 }>`
   position: relative;
@@ -22,76 +80,23 @@ const StyledSendButton = styled.button<{
   ${(props) => props.variant === "info" && `background: #F9A825`}
 `;
 
-const StyledIcon = styled.span`
+const Icon = styled.span`
   font-size: 30px;
   display: flex;
-  animation: ${(props) =>
-    props.className?.includes("sending") ? "iconAnimation 5s both" : "none"};
-  @keyframes iconAnimation {
-    0%,
-    5% {
-      translate: 0 0;
-    }
-    20%,
-    30% {
-      translate: -250px 0;
-    }
-    40% {
-      translate: 200px 0;
-      scale: 2;
-    }
-    40.1% {
-      translate: 200px -60px;
-      scale: 1;
-    }
-    40.2% {
-      translate: 34px -60px;
-    }
-    45%,
-    95% {
-      translate: 34px 0;
-    }
-    100% {
-      translate: 0 0;
-    }
+  &.sending {
+    animation: ${iconAnimation} 5s both;
   }
 `;
 
-const StyledText = styled.span`
+const Text = styled.span`
   position: absolute;
   left: 64px;
   display: block;
   white-space: nowrap;
   font-size: 17px;
   font-weight: 600;
-  animation: ${(props) =>
-    props.className?.includes("sending") ? "textAnimation 5s both" : "none"};
-  @keyframes textAnimation {
-    0%,
-    30% {
-      translate: 0 0;
-    }
-    39.9% {
-      translate: 0 100px;
-    }
-    40% {
-      translate: 300px 100px;
-    }
-    40.1% {
-      translate: 300px -60px;
-    }
-    40.2% {
-      translate: 33px -60px;
-    }
-    45% {
-      translate: 33px 0;
-    }
-    95% {
-      translate: 33px 0;
-    }
-    100% {
-      translate: 0 0;
-    }
+  &.sending {
+    animation: ${textAnimation} 5s both;
   }
 `;
 
@@ -104,7 +109,6 @@ const SendButton: React.FC<Props> = ({ children, variant }) => {
   const [isSent, setIsSent] = useState(false);
 
   const handleClick = () => {
-    console.log("click");
     setIsSending(true);
     setTimeout(() => {
       setIsSending(false);
@@ -114,14 +118,14 @@ const SendButton: React.FC<Props> = ({ children, variant }) => {
   };
   return (
     <>
-      <StyledSendButton variant={variant} onClick={handleClick}>
-        <StyledIcon className={isSending || isSent ? "sending" : ""}>
+      <Button variant={variant} onClick={handleClick}>
+        <Icon className={isSending || isSent ? "sending" : ""}>
           {isSent ? <AiOutlineCheck /> : <MdSend />}
-        </StyledIcon>
-        <StyledText className={isSending || isSent ? "sending" : ""}>
+        </Icon>
+        <Text className={isSending || isSent ? "sending" : ""}>
           {isSending ? "Sending..." : isSent ? "Sent" : children}
-        </StyledText>
-      </StyledSendButton>
+        </Text>
+      </Button>
     </>
   );
 };

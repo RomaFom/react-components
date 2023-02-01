@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
-import SendButton from "./components/Buttons/SendButton/SendButton";
+import DeleteButton from "./components/Buttons/DeleteButton/DeleteButton";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <SendButton>Send Message</SendButton>
+        <DeleteButton>Delete User</DeleteButton>
       </header>
     </div>
   );
