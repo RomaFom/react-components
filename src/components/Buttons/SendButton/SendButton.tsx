@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { MdSend } from "react-icons/md";
 import { AiOutlineCheck } from "react-icons/ai";
 const StyledSendButton = styled.button<{
-  variant?: "error" | "info";
+  variant?: "primary" | "error" | "info";
 }>`
   position: relative;
   overflow: hidden;
@@ -97,7 +97,7 @@ const StyledText = styled.span`
 
 type Props = {
   children: React.ReactNode;
-  variant?: "error" | "info";
+  variant?: "primary" | "error" | "info";
 };
 const SendButton: React.FC<Props> = ({ children, variant }) => {
   const [isSending, setIsSending] = useState(false);
