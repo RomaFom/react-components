@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
-import DeleteButton from "./components/Buttons/DeleteButton/DeleteButton";
+import Login1 from "./components/Logins/Login1/Login1";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <DeleteButton>Delete User</DeleteButton>
+        <Login1 />
       </header>
     </div>
   );

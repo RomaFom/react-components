@@ -1,0 +1,36 @@
+.login-card {
+  @apply relative z-[3] w-[85%] my-0 mx-[10px] pt-[70px] px-[20px] pb-[44px] rounded-[1.25rem] bg-white text-center;
+  @apply xs:m-0 xs:w-[400px];
+}
+
+.login-card > h2 {
+  @apply text-4xl text-black font-semibold mt-0 mx-0 mb-[12px];
+}
+
+.login-card > h3 {
+  @apply text-gray038 mt-0 mx-0 mb-[30px] font-medium text-base;
+}
+
+.login-form {
+  @apply w-full m-0 grid gap-4;
+}
+
+.login-form > input,
+.login-form > button {
+  @apply w-full h-[56px];
+}
+
+.login-form > input {
+  @apply border-2 border-solid border-[#ebebeb] text-base py-0 px-4;
+  font-family: inherit;
+}
+
+.login-form > button {
+  @apply cursor-pointer w-full h-[56px] py-0 px-4 rounded-lg bg-blue-ce7 text-zinc-50 border-0 text-base font-semibold text-center;
+  @apply tracking-[2px] transition-all duration-300;
+}
+
+.login-form > a {
+  @apply text-blue-ce7 text-base text-left mb-1.5;
+  text-decoration: none;
+}
