@@ -3,6 +3,10 @@
   @apply xs:m-0 xs:w-[400px];
 }
 
+.login-form > input {
+  @apply text-black;
+}
+
 .login-card > h2 {
   @apply text-4xl text-black font-semibold mt-0 mx-0 mb-[12px];
 }
